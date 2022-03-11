@@ -1,0 +1,31 @@
+openapi: 3.1.0
+info:
+  title: Hello service
+  version: 1.0.0
+  description: Example for a service
+servers:
+  - url: https://localhost:5000
+paths: 
+  /prpedict:
+    post:
+      operationId: inference
+      requestBody:
+        description: ""
+        content:
+          application/json:
+            schema:
+              $ref: "#/components/schemas/Input"
+      responses:
+        200:
+          description: ""
+          content:
+            application/json:
+              schema:
+                $ref: "#/components/schemas/Output"
+
+components:
+  schemas:
+    Input:
+      type: object
+    Output:
+      type: object

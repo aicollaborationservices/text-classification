@@ -2,9 +2,13 @@ import datetime
 from flask import Flask, jsonify, request
 from flask_cors import CORS, cross_origin
 import yaml
+from transformers import pipeline
+
 
 app = Flask(__name__)
 cors = CORS(app)
+
+classifier = pipeline("zero-shot-classification", model="Sahajtomar/German_Zeroshot")
 
 
 API_V1 = '/api/1.0'
@@ -43,8 +47,11 @@ def info():
 @cross_origin(origin='localhost')
 def predict():
     data = request.json
+
+    sequence = data['sequence']
+    candidate_labels = data['labels']
     
-    return jsonify({ 'data': data })
+    return jsonify(classifier(sequence, candidate_labels))
     
 
 if __name__ == "__main__":

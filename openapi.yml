@@ -27,5 +27,24 @@ components:
   schemas:
     Input:
       type: object
+      properties:
+        sequence:
+          type: "string"
+          description: "The sequence to be predicted"
+        labels:
+          type: "string"
+          description: "The labels to be predicted"
     Output:
       type: object
+      properties:
+        labels:
+          type: "array"
+          items:
+            type: "string"
+        scores:
+          type: "array"
+          items:
+            type: "number"
+        sequence:
+          type: "string"
+          description: "The sequence to be predicted"

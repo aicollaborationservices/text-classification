@@ -2,4 +2,4 @@ Flask
 flask_cors
 pyyaml
 transformers
-tensorflow
+torch
